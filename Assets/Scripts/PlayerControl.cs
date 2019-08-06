@@ -12,7 +12,8 @@ namespace cs
 
         static int LINENUM = 0;
         public static int curx = 0, cury = 0;
-        public static int player = 0, mode = 0;
+        public static int player = 0;
+        public int mode = 0;
         public static string answer = "J";
 
 
@@ -138,7 +139,7 @@ namespace cs
             }
         }
         static bool[] flag;
-        static void turnTurn()
+        void turnTurn()
         {
             Plate.turnTurn();
             for (int p = 0; p <= 1; ++p)
