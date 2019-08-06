@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 114361584257913864}
   - component: {fileID: 33917705481123966}
   - component: {fileID: 23053752477688824}
-  - component: {fileID: 114233994033248612}
+  - component: {fileID: 64674787276600244}
+  - component: {fileID: 114331087912924690}
   m_Layer: 0
   m_Name: Floor02D
   m_TagString: Cube
@@ -85,7 +86,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1986053002286778}
   m_Mesh: {fileID: 4300000, guid: 3141cea43c2a8484c8683d2d65a5d8d8, type: 3}
---- !u!114 &114233994033248612
+--- !u!64 &64674787276600244
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1986053002286778}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 3141cea43c2a8484c8683d2d65a5d8d8, type: 3}
+--- !u!114 &114331087912924690
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posx: 0
   posy: 0
+  piece: {fileID: 0}
 --- !u!114 &114361584257913864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,5 +133,6 @@ MonoBehaviour:
     type: 2}
   blockSpike02D: {fileID: 1272842127631818, guid: 18b4f3577a0de0242baf0d21352cd36c,
     type: 2}
-  offset: {x: 0, y: 0, z: 0}
-  rotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+  Plane: {fileID: 0}
+  Pillar01Blue: {fileID: 0}
+  Pillar01Red: {fileID: 0}

@@ -142,7 +142,7 @@ namespace cs
             _GameManager = gameObject.GetComponent<GameManager>();
 
             // init();
-            Plate.init();
+            //Plate.init();
             for(int i=0;i<15;i++)
             for(int j=0;j<15;j++)
             if (Plate.plate[i][j] != null)
@@ -154,7 +154,7 @@ namespace cs
 
                 GameObject newPiece = Instantiate(newPiecePrefab, position, MapGenerator.rotation);
                 //Debug.Log(MapGenerator.floors[1][1]);
-                MapGenerator.floors[i][j].GetComponent<BoardSquare>().piece = newPiece;
+                Plate.floors[i][j].GetComponent<BoardSquare>().piece = newPiece;
                 
             }
 

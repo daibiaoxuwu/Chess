@@ -15,15 +15,15 @@ namespace cs
         public GameObject Pillar01Blue, Pillar01Red;
         public static Vector3 offset = new Vector3(0, 0, 0);
         public static Quaternion rotation = Quaternion.Euler(0, 90, 0);
-        public static GameObject[][] floors;
+        
         // Use this for initialization
         void Start()
         {
             Plate.init();
-            floors = new GameObject[15][];
+            Plate.floors = new GameObject[15][];
             for (int i = 0; i < 15; i++)
             {
-                floors[i] = new GameObject[15];
+                Plate.floors[i] = new GameObject[15];
             }
 
             for (int i = -1; i <= 15; ++i)
@@ -48,7 +48,7 @@ namespace cs
                         GameObject newplane = Instantiate(Plane, position + new Vector3(0f, 1.5f, 0f), rotation);
                         newplane.SetActive(false);
                         newplane.transform.parent = floor.transform;
-                        floors[i][j] = floor;
+                        Plate.floors[i][j] = floor;
                     }
                     if (i == -1)
                     {

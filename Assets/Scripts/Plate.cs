@@ -9,6 +9,7 @@ namespace cs
 
 
         public static Piece[][] plate;
+        public static GameObject[][] floors;
         public static ConsoleColor[][] plateCol;
         public static int[][] plateDist;//for tire
         public static void init(){
