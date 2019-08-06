@@ -337,7 +337,7 @@ namespace cs
             // Move the piece if the gameState is 1
             else if (mode == 1)
             {
-                Vector2 selectedCoord;
+                Vector3 selectedCoord;
 
                 // On Left Click
                 if (Input.GetMouseButtonDown(0))
@@ -352,7 +352,7 @@ namespace cs
                         if (_hitInfo.collider.gameObject.tag == ("Cube"))
                         {
                             GameObject gameObject = _hitInfo.collider.gameObject;
-                            selectedCoord = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+                            selectedCoord = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1, gameObject.transform.position.z);
                             Program.curx = gameObject.GetComponent<BoardSquare>().posx;
                             Program.cury = gameObject.GetComponent<BoardSquare>().posy;
 
@@ -439,6 +439,11 @@ namespace cs
                                     Plate.calSkill();
                                     return;
                                 }
+                                else
+                                {
+                                    mode = 0;
+                                    Plate.colRefresh();
+                                }
                             }
 
                         }
@@ -446,8 +451,12 @@ namespace cs
                         {
                             mode = 0;
                             Plate.colRefresh();
-
                         }
+                    }
+                    else
+                    {
+                        mode = 0;
+                        Plate.colRefresh();
                     }
                 }
             }

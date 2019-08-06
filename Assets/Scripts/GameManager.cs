@@ -25,7 +25,7 @@ namespace cs
         }
 	
 	    // Move the SelectedPiece to the inputted coords
-	    public void MovePiece(Vector2 _coordToMove)
+	    public void MovePiece(Vector3 _coordToMove)
 	    {
 		    SelectedPiece.transform.position = _coordToMove;		// Move the piece
             SelectedPiece.transform.GetChild(0).gameObject.SetActive(false);
