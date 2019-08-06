@@ -420,17 +420,21 @@ namespace cs
                             }
                             else
                             {
+                                Debug.Log("J!");
                                 int response = Plate.listenKey(answer);
+                                Debug.Log("Respond!"+response);
                                 if (response == 0)
                                 { //移动，返回0
                                     if (isPush) pushMec(Plate.selx, Plate.sely, curx, cury);
+                                    _GameManager.MovePiece(selectedCoord);
                                     turnTurn();
                                     return;
                                 }
                                 else if (response != -1)
                                 { //不是无效按键
+                                //!!!TODO skill
                                     mode = response;
-                                    _GameManager.MovePiece(selectedCoord);
+                                   
                                     Plate.colRefresh();
                                     Plate.calSkill();
                                     return;
