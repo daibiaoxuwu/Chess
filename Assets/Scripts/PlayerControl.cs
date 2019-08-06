@@ -307,21 +307,21 @@ namespace cs
                    
                     _ray = PlayerCam.ScreenPointToRay(Input.mousePosition); // Specify the ray to be casted from the position of the mouse click
 
-                    print("click");
+                    Debug.Log("click");
                     // Raycast and verify that it collided
                     if (Physics.Raycast(_ray, out _hitInfo))
                     {
-                        print("hit0");
+                        Debug.Log("hit0");
                         // Select the piece if it has the good Tag
                         if (_hitInfo.collider.gameObject.tag == ("Cube"))
                         {
                             GameObject boardSquare = _hitInfo.collider.gameObject;
-                            print("hit");                                       
+                            Debug.Log("hit");                                       
                             Program.curx = boardSquare.GetComponent<BoardSquare>().posx;
                             Program.cury = boardSquare.GetComponent<BoardSquare>().posy;
                             if (Plate.selectPiece())
                             {
-                                print("sel");
+                                Debug.Log("sel");
                                 _GameManager.SelectPiece(boardSquare.GetComponent<BoardSquare>().piece);
                                 mode = 1;
                                 isPush = false;
