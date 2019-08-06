@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33921567975452590}
   - component: {fileID: 23655331641472948}
   - component: {fileID: 114508989138835778}
+  - component: {fileID: 114888338785662822}
   m_Layer: 0
   m_Name: Floor01D
   m_TagString: Cube
@@ -97,3 +98,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posx: 0
   posy: 0
+--- !u!114 &114888338785662822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886358935065936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33f50d9b6cfdc04fb118a83e433c251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 0
+  posx: 0
+  posy: 0
+  selectedSkill: 
+  wait: 0
+  tire: 0
+  waitx: 0
+  waity: 0
+  dizzy: 0

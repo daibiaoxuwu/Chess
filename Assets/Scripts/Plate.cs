@@ -1,11 +1,13 @@
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
-
+using UnityEngine;
 namespace cs
 {
-    abstract class Plate
+    public static class Plate
     {
+
+
         public static Piece[][] plate;
         public static ConsoleColor[][] plateCol;
         public static int[][] plateDist;//for tire
@@ -133,6 +135,24 @@ namespace cs
 
                 colRefresh();
                 calMove(0,0);
+                /*
+                 * TODO!!!
+                for (int i = 0; i < 15; ++i)
+                {                   
+                    for (int j = 0; j < 15; ++j)
+                    {
+                        if(plateCol[i][j] > 0){
+                            MapGenerator.floors[i][j].child!! SetActive(true);
+                        }else{
+                            MapGenerator.floors[i][j].child!! SetActive(false);
+                        }
+                        //TODO:
+                        //Console.BackgroundColor = plateCol[i][j];
+                        //if (plate[i][j] != null && plate[i][j].dizzy > 0) Console.BackgroundColor = (plate[i][j].player == 0 ? ConsoleColor.DarkCyan : ConsoleColor.DarkMagenta);
+                        
+                       
+                    }                  
+                }*/
             }
 
             

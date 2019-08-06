@@ -4,4 +4,5 @@ using UnityEngine;
 
 public class BoardSquare : MonoBehaviour {
     public int posx, posy;	
+    public GameObject piece;
 }

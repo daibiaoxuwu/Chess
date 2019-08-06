@@ -10,6 +10,8 @@ namespace cs
         private Camera PlayerCam;           // Camera used by the player
         private GameManager _GameManager;   // GameObject responsible for the management of the game
 
+        public GameObject Pillar01Red, Pillar01Blue;//, mapGenerator;
+
         static int LINENUM = 0;
         public static int curx = 0, cury = 0;
         public static int player = 0, mode = 0;
@@ -141,6 +143,21 @@ namespace cs
 
             // init();
             Plate.init();
+            for(int i=0;i<15;i++)
+            for(int j=0;j<15;j++)
+            if (Plate.plate[i][j] != null)
+            {
+                GameObject newPiecePrefab = Pillar01Blue;
+                if (Plate.plate[i][j].player == 1) { newPiecePrefab = Pillar01Red; }
+                Vector3 position = MapGenerator.offset + new Vector3(i * 2, 0f, j * 2);
+                if (i < 5 || i > 9) position += new Vector3(0f, 0.5f, 0);
+
+                GameObject newPiece = Instantiate(newPiecePrefab, position, MapGenerator.rotation);
+                //Debug.Log(MapGenerator.floors[1][1]);
+                MapGenerator.floors[i][j].GetComponent<BoardSquare>().piece = newPiece;
+                
+            }
+
             flag = new bool[2];
             flag[0] = true; flag[1] = true;
             stone = new int[2];
@@ -169,17 +186,25 @@ namespace cs
                 // On Left Click
                 if (Input.GetMouseButtonDown(0))
                 {
+                   
                     _ray = PlayerCam.ScreenPointToRay(Input.mousePosition); // Specify the ray to be casted from the position of the mouse click
 
+                    print("click");
                     // Raycast and verify that it collided
                     if (Physics.Raycast(_ray, out _hitInfo))
                     {
+                        print("hit0");
                         // Select the piece if it has the good Tag
-                        if (_hitInfo.collider.gameObject.tag == ("PiecePlayer1"))
+                        if (_hitInfo.collider.gameObject.tag == ("Cube"))
                         {
-                            _GameManager.SelectPiece(_hitInfo.collider.gameObject);
+                            GameObject boardSquare = _hitInfo.collider.gameObject;
+                            print("hit");                                       
+                            Program.curx = boardSquare.GetComponent<BoardSquare>().posx;
+                            Program.cury = boardSquare.GetComponent<BoardSquare>().posy;
                             if (Plate.selectPiece())
                             {
+                                print("sel");
+                                _GameManager.SelectPiece(boardSquare.GetComponent<BoardSquare>().piece);
                                 mode = 1;
                                 isPush = false;
                                 issteal = false;
@@ -210,8 +235,8 @@ namespace cs
                         {
                             GameObject gameObject = _hitInfo.collider.gameObject;
                             selectedCoord = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-                            Plate.selx = gameObject.GetComponent<BoardSquare>().posx;
-                            Plate.sely = gameObject.GetComponent<BoardSquare>().posy;
+                            Program.curx = gameObject.GetComponent<BoardSquare>().posx;
+                            Program.cury = gameObject.GetComponent<BoardSquare>().posy;
 
                             Plate.colRefresh();
                             Plate.calMove(Plate.selx, Plate.sely);

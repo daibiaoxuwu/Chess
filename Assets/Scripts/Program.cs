@@ -57,7 +57,6 @@ namespace cs
         static void Main(string[] args)
         {
             // init();
-            Plate.init();
             flag=new bool[2];
             flag[0]=true;flag[1]=true;
             stone=new int[2];

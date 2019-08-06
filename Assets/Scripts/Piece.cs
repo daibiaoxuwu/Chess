@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 namespace cs
 {
-    abstract class Piece : MonoBehaviour
+    public abstract class Piece
     {
         public int player;
         public int posx, posy;

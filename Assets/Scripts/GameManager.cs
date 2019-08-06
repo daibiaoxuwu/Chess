@@ -4,22 +4,23 @@ namespace cs
 {
     public class GameManager : MonoBehaviour {
 	
-	public int gameState = 0;			// In this state, the code is waiting for : 0 = Piece selection, 1 = Piece animation, 2 = Player2/AI movement
-	//private int activePlayer = 0;		// 0 = Player1, 1 = Player2, 2 = AI, to be used later
-	private GameObject SelectedPiece;	// Selected Piece
+	    public int gameState = 0;			// In this state, the code is waiting for : 0 = Piece selection, 1 = Piece animation, 2 = Player2/AI movement
+	    //private int activePlayer = 0;		// 0 = Player1, 1 = Player2, 2 = AI, to be used later
+	    private GameObject SelectedPiece;	// Selected Piece
 	
-	//Update SlectedPiece with the GameObject inputted to this function
-	public void SelectPiece(GameObject _PieceToSelect)
-	{
-		// Change color of the selected piece to make it apparent. Put it back to white when the piece is unselected
-		if(SelectedPiece)
-		{
-			SelectedPiece.GetComponent<Renderer>().material.color = Color.white;
-		}
-		SelectedPiece = _PieceToSelect;
-		SelectedPiece.GetComponent<Renderer>().material.color = Color.red;
-        Program.curx = _PieceToSelect.GetComponent<Piece>().posx;
-        Program.cury = _PieceToSelect.GetComponent<Piece>().posy;
+	    //Update SlectedPiece with the GameObject inputted to this function
+	    public void SelectPiece(GameObject _PieceToSelect)
+	    {
+		    // Change color of the selected piece to make it apparent. Put it back to white when the piece is unselected
+		    if(SelectedPiece)
+		    {
+			    //SelectedPiece.GetComponent<Renderer>().material.color = Color.white;
+                SelectedPiece.transform.GetChild(0).gameObject.SetActive(false);
+		    }
+		    SelectedPiece = _PieceToSelect;
+           // SelectedPiece.GetComponent<Renderer>().material.color = Color.red;
+            SelectedPiece.transform.GetChild(0).gameObject.SetActive(true);            
+           
 
         }
 	
@@ -27,7 +28,8 @@ namespace cs
 	    public void MovePiece(Vector2 _coordToMove)
 	    {
 		    SelectedPiece.transform.position = _coordToMove;		// Move the piece
-		    SelectedPiece.GetComponent<Renderer>().material.color = Color.white;	// Change it's color back
+            SelectedPiece.transform.GetChild(0).gameObject.SetActive(false);
+           // SelectedPiece.GetComponent<Renderer>().material.color = Color.white;	// Change it's color back
 		    SelectedPiece = null;									// Unselect the Piece
 	    }
 	
