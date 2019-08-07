@@ -191,13 +191,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 215105150}
-  m_LocalRotation: {x: 0.35355335, y: -0.61237246, z: 0.35355335, w: 0.61237246}
-  m_LocalPosition: {x: 28.7, y: 19.9, z: 13.9}
+  m_LocalRotation: {x: 0.4055798, y: -0.579228, z: 0.4055798, w: 0.579228}
+  m_LocalPosition: {x: 25.4, y: 25.44, z: 17.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 120, y: 90, z: 180}
+  m_LocalEulerAnglesHint: {x: 110, y: 90, z: 180}
 --- !u!1001 &218288785
 Prefab:
   m_ObjectHideFlags: 0
@@ -673,9 +673,9 @@ MonoBehaviour:
   blockSpike02D: {fileID: 1272842127631818, guid: 18b4f3577a0de0242baf0d21352cd36c,
     type: 2}
   Plane: {fileID: 1387847828177896, guid: 0d149893b09a81546a95923134a274b7, type: 2}
-  Pillar01Blue: {fileID: 1631449528143130, guid: 0e74d6b2187f67f419af707289ebcdee,
+  Pillar01Blue: {fileID: 1018323675748128, guid: d130e8b2fce3f9d449880af21d058a1e,
     type: 2}
-  Pillar01Red: {fileID: 1112383068533714, guid: d64e0c98fd927aa4cabb3220e8196347,
+  Pillar01Red: {fileID: 1547915042330156, guid: 75e60b3780bf1a84382b8336dc144c70,
     type: 2}
 --- !u!114 &1357973187
 MonoBehaviour:
