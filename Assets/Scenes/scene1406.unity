@@ -673,9 +673,9 @@ MonoBehaviour:
   blockSpike02D: {fileID: 1272842127631818, guid: 18b4f3577a0de0242baf0d21352cd36c,
     type: 2}
   Plane: {fileID: 1387847828177896, guid: 0d149893b09a81546a95923134a274b7, type: 2}
-  Pillar01Blue: {fileID: 1612688587805186, guid: d64e0c98fd927aa4cabb3220e8196347,
+  Pillar01Blue: {fileID: 1631449528143130, guid: 0e74d6b2187f67f419af707289ebcdee,
     type: 2}
-  Pillar01Red: {fileID: 1630477332997122, guid: 0e74d6b2187f67f419af707289ebcdee,
+  Pillar01Red: {fileID: 1112383068533714, guid: d64e0c98fd927aa4cabb3220e8196347,
     type: 2}
 --- !u!114 &1357973187
 MonoBehaviour:

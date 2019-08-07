@@ -48,14 +48,14 @@ namespace cs
 
                     Vector3 position = offset + new Vector3(i * 2, 0f, j * 2);
                     if (i < 5 || i > 9) position += new Vector3(0f, 0.5f, 0);
-
-                    if ((i + j) % 2 == 0)
-                        floor = Instantiate(floor01D, position, rotation);
-                    else
-                        floor = Instantiate(floor02D, position, rotation);
-                    floor.transform.parent = gameObject.transform;
                     if (i >= 0 && i < 15 && j >= 0 && j < 15)
                     {
+                        if ((i + j) % 2 == 0)
+                            floor = Instantiate(floor01D, position, rotation);
+                        else
+                            floor = Instantiate(floor02D, position, rotation);
+                        floor.transform.parent = gameObject.transform;
+                 
                         floor.GetComponent<BoardSquare>().posx = i;
                         floor.GetComponent<BoardSquare>().posy = j;
 
@@ -64,10 +64,10 @@ namespace cs
                         newplane.transform.parent = floor.transform;
                         Plate.floors[i][j] = floor;
                     }
-                    if (i == -1)
+                    if (i == 15)
                     {
                         GameObject border, border2, border3;
-                        if (j == -1)
+                        if (j == 15)
                         {
                             border = Instantiate(blockSpike02D, position + new Vector3(-0.5f, 1.5f, -0.5f), rotation);
                             border.transform.parent = gameObject.transform;
@@ -80,7 +80,7 @@ namespace cs
                             border.transform.parent = gameObject.transform;
                         }
 
-                        if (j == 15)
+                        if (j == -1)
                         {
                             border2 = Instantiate(blockSpike01D, position + new Vector3(-0.5f, 1.5f, 0.5f), rotation);
                             border2.transform.parent = gameObject.transform;
@@ -95,10 +95,10 @@ namespace cs
 
                     }
 
-                    if (i == 15)
+                    if (i == -1)
                     {
                         GameObject border, border2, border3;
-                        if (j == -1)
+                        if (j == 15)
                         {
                             border = Instantiate(blockSpike01D, position + new Vector3(0.5f, 1.5f, -0.5f), rotation);
                             border.transform.parent = gameObject.transform;
@@ -111,7 +111,7 @@ namespace cs
                             border.transform.parent = gameObject.transform;
                         }
 
-                        if (j == 15)
+                        if (j == -1)
                         {
                             border2 = Instantiate(blockSpike02D, position + new Vector3(0.5f, 1.5f, 0.5f), rotation);
                             border2.transform.parent = gameObject.transform;
@@ -128,7 +128,7 @@ namespace cs
                     if ((j == -1 || j == 15) && i != -1 && i != 15)
                     {
                         float z = 0.5f;
-                        if (j == -1) z = -0.5f;
+                        if (j == 15) z = -0.5f;
                         GameObject border, border2;
                         border = Instantiate(blockS01D, position + new Vector3(z, 1.5f, z), rotation);
                         border.transform.parent = gameObject.transform;
@@ -322,6 +322,7 @@ namespace cs
                             if (Plate.selectPiece())
                             {
                                 Debug.Log("sel");
+                               
                                 _GameManager.SelectPiece(boardSquare.GetComponent<BoardSquare>().piece);
                                 mode = 1;
                                 isPush = false;
@@ -426,7 +427,12 @@ namespace cs
                                 if (response == 0)
                                 { //ÒÆ¶¯£¬·µ»Ø0
                                     if (isPush) pushMec(Plate.selx, Plate.sely, curx, cury);
+                                    GameObject oldPiece = Plate.floors[Program.curx][Program.cury].GetComponent<BoardSquare>().piece;
+                                    if (oldPiece != null) Destroy(oldPiece);
+                                    Plate.floors[Program.curx][Program.cury].GetComponent<BoardSquare>().piece = Plate.floors[Plate.selx][Plate.sely].GetComponent<BoardSquare>().piece;
                                     _GameManager.MovePiece(selectedCoord);
+                                    Plate.floors[Plate.selx][Plate.sely].GetComponent<BoardSquare>().piece = null;
+
                                     turnTurn();
                                     return;
                                 }

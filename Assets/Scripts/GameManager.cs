@@ -18,7 +18,7 @@ namespace cs
                 SelectedPiece.transform.GetChild(0).gameObject.SetActive(false);
 		    }
 		    SelectedPiece = _PieceToSelect;
-           // SelectedPiece.GetComponent<Renderer>().material.color = Color.red;
+            // SelectedPiece.GetComponent<Renderer>().material.color = Color.red;
             SelectedPiece.transform.GetChild(0).gameObject.SetActive(true);            
            
 
