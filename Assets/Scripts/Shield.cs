@@ -1,5 +1,5 @@
 using System;
-
+using UnityEngine;
 namespace cs
 {
     class Shield : Piece
@@ -16,7 +16,7 @@ namespace cs
                 x+=(PlayerControl.curx-selx);
                 y+=(PlayerControl.cury-sely);
                 if(!Plate.inside(x,y)) return;
-                Plate.plateCol[x][y]=ConsoleColor.DarkGray;
+                Plate.plateCol[x][y]=Color.gray;
             }
         }
         public override bool releaseSkill(int srcx, int srcy, int dstx, int dsty){

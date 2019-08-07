@@ -60,7 +60,7 @@ namespace cs
                         floor.GetComponent<BoardSquare>().posx = i;
                         floor.GetComponent<BoardSquare>().posy = j;
 
-                        GameObject newplane = Instantiate(Plane, position + new Vector3(0f, 1.5f, 0f), rotation);
+                        GameObject newplane = Instantiate(Plane, position + new Vector3(0f, 1.1f, 0f), rotation);
                         newplane.SetActive(false);
                         newplane.transform.parent = floor.transform;
                         Plate.floors[i][j] = floor;
@@ -143,9 +143,13 @@ namespace cs
             if (Plate.floors == null) return;
             for(int i=0;i<15;i++){
                 for(int j=0;j<15;j++){                   
-                    if (Plate.plateCol[i][j] != ConsoleColor.Black)
+                    if (Plate.plateCol[i][j] != Color.black)
                     {
-                        Plate.floors[i][j].transform.GetChild(0).gameObject.SetActive(true); 
+                        GameObject plane = Plate.floors[i][j].transform.GetChild(0).gameObject;
+                        plane.SetActive(true);
+                        plane.GetComponent<Renderer>().material.SetColor("_Color", Plate.plateCol[i][j]);
+
+
                         Debug.Log("display!");
                     }
                     else
@@ -417,7 +421,7 @@ namespace cs
                                             if ((i != Plate.selx - 2 && i != Plate.selx - 1 && i != Plate.selx + 1 && i != Plate.selx + 2 || j != Plate.sely) &&
                                                     (j != Plate.sely - 2 && j != Plate.sely - 1 && j != Plate.sely + 1 && j != Plate.sely + 2 || i != Plate.selx))
                                             {
-                                                Plate.plateCol[i][j] = 0;//!!! color.black
+                                                Plate.plateCol[i][j] = Color.black;
                                             }
                                 }
                                 else

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 namespace cs
 {
     class Elephant : Piece
@@ -23,8 +24,8 @@ namespace cs
             Plate.canStrike(PlayerControl.player, selx,sely-2,2,2,selx,sely);
         }
         public override bool releaseSkill(int srcx, int srcy, int dstx, int dsty){
-            if(Plate.plateCol[dstx][dsty]!=ConsoleColor.DarkGray &&
-                    Plate.plateCol[dstx][dsty]!=ConsoleColor.DarkYellow){
+            if(Plate.plateCol[dstx][dsty]!=Color.gray &&
+                    Plate.plateCol[dstx][dsty]!=Color.yellow){
                         return false;
                     }
             Piece selpiece = Plate.plate[srcx][srcy]; 

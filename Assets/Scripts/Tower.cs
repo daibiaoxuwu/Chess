@@ -1,5 +1,5 @@
 using System;
-
+using UnityEngine;
 namespace cs
 {
     class Tower : Piece
@@ -17,13 +17,13 @@ namespace cs
                 for(int j = Math.Max(0, sely - jlen); j <= Math.Min(14, sely + jlen); ++j ){
                     if(i==selx && j==sely) continue;
                     if(selectedSkill=="I" && Plate.plate[i][j]!=null) continue;
-                    Plate.plateCol[i][j]=ConsoleColor.DarkGray;
+                    Plate.plateCol[i][j]=Color.gray;
                 }
             }
         }
         public override bool releaseSkill(int srcx, int srcy, int dstx, int dsty){
-            if((selectedSkill=="U" && Plate.plateCol[dstx][dsty] == ConsoleColor.DarkYellow )
-                    || Plate.plateCol[dstx][dsty] == ConsoleColor.DarkGray){
+            if((selectedSkill=="U" && Plate.plateCol[dstx][dsty] == Color.yellow )
+                    || Plate.plateCol[dstx][dsty] == Color.gray){
                 if(wait==2){
                     Plate.plate[waitx][waity]=null;
                 }

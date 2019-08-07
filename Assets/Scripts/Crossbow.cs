@@ -1,5 +1,5 @@
 using System;
-
+using UnityEngine;
 namespace cs
 {
     class Crossbow : Piece
@@ -22,8 +22,8 @@ namespace cs
             }
         }
         public override bool releaseSkill(int srcx, int srcy, int dstx, int dsty){
-            if(Plate.plateCol[dstx][dsty] == ConsoleColor.DarkYellow 
-                    || Plate.plateCol[dstx][dsty] == ConsoleColor.DarkGray){
+            if(Plate.plateCol[dstx][dsty] == Color.yellow 
+                    || Plate.plateCol[dstx][dsty] == Color.gray){
                 waitx=dstx;
                 waity=dsty;
                 wait=1;

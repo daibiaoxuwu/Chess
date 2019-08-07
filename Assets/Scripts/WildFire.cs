@@ -1,5 +1,5 @@
 using System;
-
+using UnityEngine;
 namespace cs
 {
     class WildFire : Piece
@@ -15,18 +15,18 @@ namespace cs
         }
         public override void calSkill(int selx, int sely){
             for(int i=1;i<=arrowLength; ++i){
-                if(Plate.inside(selx+i, sely)) Plate.plateCol[selx+i][sely]=ConsoleColor.DarkGray;
-                if(Plate.inside(selx+i, sely+i)) Plate.plateCol[selx+i][sely+i]=ConsoleColor.DarkGray;
-                if(Plate.inside(selx, sely+i)) Plate.plateCol[selx][sely+i]=ConsoleColor.DarkGray;
-                if(Plate.inside(selx-i, sely+i)) Plate.plateCol[selx-i][sely+i]=ConsoleColor.DarkGray;
-                if(Plate.inside(selx-i, sely)) Plate.plateCol[selx-i][sely]=ConsoleColor.DarkGray;
-                if(Plate.inside(selx-i, sely-i)) Plate.plateCol[selx-i][sely-i]=ConsoleColor.DarkGray;
-                if(Plate.inside(selx, sely-i)) Plate.plateCol[selx][sely-i]=ConsoleColor.DarkGray;
-                if(Plate.inside(selx+i, sely-i)) Plate.plateCol[selx+i][sely-i]=ConsoleColor.DarkGray;
+                if(Plate.inside(selx+i, sely)) Plate.plateCol[selx+i][sely]=Color.gray;
+                if(Plate.inside(selx+i, sely+i)) Plate.plateCol[selx+i][sely+i]=Color.gray;
+                if(Plate.inside(selx, sely+i)) Plate.plateCol[selx][sely+i]=Color.gray;
+                if(Plate.inside(selx-i, sely+i)) Plate.plateCol[selx-i][sely+i]=Color.gray;
+                if(Plate.inside(selx-i, sely)) Plate.plateCol[selx-i][sely]=Color.gray;
+                if(Plate.inside(selx-i, sely-i)) Plate.plateCol[selx-i][sely-i]=Color.gray;
+                if(Plate.inside(selx, sely-i)) Plate.plateCol[selx][sely-i]=Color.gray;
+                if(Plate.inside(selx+i, sely-i)) Plate.plateCol[selx+i][sely-i]=Color.gray;
             }
         }
         public override bool releaseSkill(int srcx, int srcy, int dstx, int dsty){
-            if(Plate.plateCol[dstx][dsty] == ConsoleColor.DarkGray){
+            if(Plate.plateCol[dstx][dsty] == Color.gray){
                 Piece piece = new Fire();
                 piece.player=player;
                 if(Plate.plate[dstx][dsty]!=null && Plate.plate[dstx][dsty] is Wall) PlayerControl.stone[player]++;
