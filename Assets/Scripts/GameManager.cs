@@ -15,11 +15,11 @@ namespace cs
 		    if(SelectedPiece)
 		    {
 			    //SelectedPiece.GetComponent<Renderer>().material.color = Color.white;
-                SelectedPiece.transform.GetChild(0).gameObject.SetActive(false);
+               // SelectedPiece.transform.GetChild(0).gameObject.SetActive(false);
 		    }
 		    SelectedPiece = _PieceToSelect;
             // SelectedPiece.GetComponent<Renderer>().material.color = Color.red;
-            SelectedPiece.transform.GetChild(0).gameObject.SetActive(true);            
+           // SelectedPiece.transform.GetChild(0).gameObject.SetActive(true);            
            
 
         }
@@ -28,7 +28,7 @@ namespace cs
 	    public void MovePiece(Vector3 _coordToMove)
 	    {
 		    SelectedPiece.transform.position = _coordToMove;		// Move the piece
-            SelectedPiece.transform.GetChild(0).gameObject.SetActive(false);
+           // SelectedPiece.transform.GetChild(0).gameObject.SetActive(false);
            // SelectedPiece.GetComponent<Renderer>().material.color = Color.white;	// Change it's color back
 		    SelectedPiece = null;									// Unselect the Piece
 	    }
