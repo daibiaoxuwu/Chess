@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
-
+using System;
+using System.IO;
+using System.Text.RegularExpressions;
 namespace cs
 {
     public class PlayerControl : MonoBehaviour
@@ -11,8 +13,7 @@ namespace cs
         private GameManager _GameManager;   // GameObject responsible for the management of the game       
 
         static int LINENUM = 0;
-        public static int curx = 0, cury = 0;
-        public static int player = 0;
+        public static int player = 0, curx = 0, cury = 0;
         public int mode = 0;
         public static string answer = "J";
 
@@ -138,6 +139,22 @@ namespace cs
                 }
             }
         }
+        public static void displayBoard(){
+            if (Plate.floors == null) return;
+            for(int i=0;i<15;i++){
+                for(int j=0;j<15;j++){                   
+                    if (Plate.plateCol[i][j] != ConsoleColor.Black)
+                    {
+                        Plate.floors[i][j].transform.GetChild(0).gameObject.SetActive(true); 
+                        Debug.Log("display!");
+                    }
+                    else
+                    {
+                        Plate.floors[i][j].transform.GetChild(0).gameObject.SetActive(false);
+                    }                  
+                }
+            }
+        }
         static bool[] flag;
         void turnTurn()
         {
@@ -190,6 +207,8 @@ namespace cs
 
             mode = 0;
             player = 1 - player;
+            
+            Debug.Log("turn!"+player);
             Plate.colRefresh();
         }
         public static int[] stone;
@@ -304,7 +323,7 @@ namespace cs
                 // On Left Click
                 if (Input.GetMouseButtonDown(0))
                 {
-                   
+                    
                     _ray = PlayerCam.ScreenPointToRay(Input.mousePosition); // Specify the ray to be casted from the position of the mouse click
 
                     Debug.Log("click");
@@ -316,9 +335,9 @@ namespace cs
                         if (_hitInfo.collider.gameObject.tag == ("Cube"))
                         {
                             GameObject boardSquare = _hitInfo.collider.gameObject;
-                            Debug.Log("hit");                                       
-                            Program.curx = boardSquare.GetComponent<BoardSquare>().posx;
-                            Program.cury = boardSquare.GetComponent<BoardSquare>().posy;
+                            Debug.Log("hit"+player);                                       
+                            curx = boardSquare.GetComponent<BoardSquare>().posx;
+                            cury = boardSquare.GetComponent<BoardSquare>().posy;
                             if (Plate.selectPiece())
                             {
                                 Debug.Log("sel");
@@ -329,6 +348,8 @@ namespace cs
                                 issteal = false;
                                 Plate.colRefresh();
                                 Plate.calMove(curx, cury);
+                                Debug.Log("123");
+                                Plate.print();
                             }
                         }
                     }
@@ -343,6 +364,7 @@ namespace cs
                 // On Left Click
                 if (Input.GetMouseButtonDown(0))
                 {
+                    Plate.print();
                     _ray = PlayerCam.ScreenPointToRay(Input.mousePosition); // Specify the ray to be casted from the position of the mouse click
 
                     // Raycast and verify that it collided
@@ -354,8 +376,8 @@ namespace cs
                         {
                             GameObject gameObject = _hitInfo.collider.gameObject;
                             selectedCoord = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1, gameObject.transform.position.z);
-                            Program.curx = gameObject.GetComponent<BoardSquare>().posx;
-                            Program.cury = gameObject.GetComponent<BoardSquare>().posy;
+                            curx = gameObject.GetComponent<BoardSquare>().posx;
+                            cury = gameObject.GetComponent<BoardSquare>().posy;
 
                             Plate.colRefresh();
                             Plate.calMove(Plate.selx, Plate.sely);
@@ -427,9 +449,9 @@ namespace cs
                                 if (response == 0)
                                 { //ÒÆ¶¯£¬·µ»Ø0
                                     if (isPush) pushMec(Plate.selx, Plate.sely, curx, cury);
-                                    GameObject oldPiece = Plate.floors[Program.curx][Program.cury].GetComponent<BoardSquare>().piece;
+                                    GameObject oldPiece = Plate.floors[curx][cury].GetComponent<BoardSquare>().piece;
                                     if (oldPiece != null) Destroy(oldPiece);
-                                    Plate.floors[Program.curx][Program.cury].GetComponent<BoardSquare>().piece = Plate.floors[Plate.selx][Plate.sely].GetComponent<BoardSquare>().piece;
+                                    Plate.floors[curx][cury].GetComponent<BoardSquare>().piece = Plate.floors[Plate.selx][Plate.sely].GetComponent<BoardSquare>().piece;
                                     _GameManager.MovePiece(selectedCoord);
                                     Plate.floors[Plate.selx][Plate.sely].GetComponent<BoardSquare>().piece = null;
 

@@ -13,14 +13,14 @@ namespace cs
                     Plate.canStrike(player, i,j,2,2,x,y);
         }
         public override void calSkill(int selx, int sely){
-            Plate.canStrike(Program.player, selx+1,sely,2,2,selx,sely);
-            Plate.canStrike(Program.player, selx-1,sely,2,2,selx,sely);
-            Plate.canStrike(Program.player, selx,sely+1,2,2,selx,sely);
-            Plate.canStrike(Program.player, selx,sely-1,2,2,selx,sely);
-            Plate.canStrike(Program.player, selx+2,sely,2,2,selx,sely);
-            Plate.canStrike(Program.player, selx-2,sely,2,2,selx,sely);
-            Plate.canStrike(Program.player, selx,sely+2,2,2,selx,sely);
-            Plate.canStrike(Program.player, selx,sely-2,2,2,selx,sely);
+            Plate.canStrike(PlayerControl.player, selx+1,sely,2,2,selx,sely);
+            Plate.canStrike(PlayerControl.player, selx-1,sely,2,2,selx,sely);
+            Plate.canStrike(PlayerControl.player, selx,sely+1,2,2,selx,sely);
+            Plate.canStrike(PlayerControl.player, selx,sely-1,2,2,selx,sely);
+            Plate.canStrike(PlayerControl.player, selx+2,sely,2,2,selx,sely);
+            Plate.canStrike(PlayerControl.player, selx-2,sely,2,2,selx,sely);
+            Plate.canStrike(PlayerControl.player, selx,sely+2,2,2,selx,sely);
+            Plate.canStrike(PlayerControl.player, selx,sely-2,2,2,selx,sely);
         }
         public override bool releaseSkill(int srcx, int srcy, int dstx, int dsty){
             if(Plate.plateCol[dstx][dsty]!=ConsoleColor.DarkGray &&

@@ -9,7 +9,7 @@ namespace cs
         public override int value(){return 7;}
         public override bool ismechanics(){return true;}//是否为机械
         public override string getDefLevel(){return "机械";}
-        public override string getPrompt(){if(Program.stone[Program.player]>0) return "U-投掷"; else return "";}
+        public override string getPrompt(){if(PlayerControl.stone[PlayerControl.player]>0) return "U-投掷"; else return "";}
 
         public override void walk(int x, int y){ //计算棋子移动范围 
         }
@@ -29,7 +29,7 @@ namespace cs
             if(Plate.plateCol[dstx][dsty] == ConsoleColor.DarkGray){
                 Piece piece = new Fire();
                 piece.player=player;
-                if(Plate.plate[dstx][dsty]!=null && Plate.plate[dstx][dsty] is Wall) Program.stone[player]++;
+                if(Plate.plate[dstx][dsty]!=null && Plate.plate[dstx][dsty] is Wall) PlayerControl.stone[player]++;
                 Plate.plate[dstx][dsty]=piece;
                 Plate.plate[srcx][srcy]=null;
                 return true;

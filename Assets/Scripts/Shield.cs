@@ -13,8 +13,8 @@ namespace cs
         public override void calSkill(int selx, int sely){
             int x = selx, y = sely;
             for(int i = 1; i <= 15; ++ i){
-                x+=(Program.curx-selx);
-                y+=(Program.cury-sely);
+                x+=(PlayerControl.curx-selx);
+                y+=(PlayerControl.cury-sely);
                 if(!Plate.inside(x,y)) return;
                 Plate.plateCol[x][y]=ConsoleColor.DarkGray;
             }
